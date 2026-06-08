@@ -49,7 +49,7 @@ export function ApplyForm({ roles, initialRoleId }: { roles: Career[]; initialRo
         <div
           style={{
             width: 56, height: 56, borderRadius: "50%",
-            background: "rgba(61,220,154,0.12)", border: "1px solid var(--accent)",
+            background: "rgba(79, 139, 255,0.12)", border: "1px solid var(--accent)",
             display: "grid", placeItems: "center", margin: "0 auto 24px", color: "var(--accent)",
           }}
         >

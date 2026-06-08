@@ -81,7 +81,7 @@ export default async function ServicesPage() {
                   padding: 28,
                   borderColor: m.featured ? "var(--accent)" : "var(--border)",
                   background: m.featured
-                    ? "linear-gradient(180deg, rgba(61,220,154,0.04), transparent 60%), var(--surface-1)"
+                    ? "linear-gradient(180deg, rgba(79, 139, 255,0.04), transparent 60%), var(--surface-1)"
                     : undefined,
                 }}
               >

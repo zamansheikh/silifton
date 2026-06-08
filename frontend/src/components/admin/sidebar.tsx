@@ -83,7 +83,7 @@ export function Sidebar({ open = false }: { open?: boolean }) {
 
       <div style={{ marginTop: 24, padding: 14, background: "var(--surface-1)", border: "1px solid var(--border)", borderRadius: 10 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-          <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--accent)", boxShadow: "0 0 0 3px rgba(61,220,154,0.2)" }} />
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--accent)", boxShadow: "0 0 0 3px rgba(79, 139, 255,0.2)" }} />
           <span style={{ fontSize: 12.5, fontWeight: 500 }}>All systems normal</span>
         </div>
         <div style={{ fontSize: 11.5, color: "var(--fg-mute)", fontFamily: "var(--font-mono)" }}>API 12ms · DB 4ms · CDN ✓</div>

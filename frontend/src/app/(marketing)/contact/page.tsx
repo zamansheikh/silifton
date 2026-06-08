@@ -70,7 +70,7 @@ export default function ContactPage() {
           <div className="panel" style={{ padding: 40 }}>
             {status === "sent" ? (
               <div style={{ textAlign: "center", padding: "60px 0" }}>
-                <div style={{ width: 56, height: 56, borderRadius: "50%", background: "rgba(61,220,154,0.12)", border: "1px solid var(--accent)", display: "grid", placeItems: "center", margin: "0 auto 24px", color: "var(--accent)" }}>
+                <div style={{ width: 56, height: 56, borderRadius: "50%", background: "rgba(79, 139, 255,0.12)", border: "1px solid var(--accent)", display: "grid", placeItems: "center", margin: "0 auto 24px", color: "var(--accent)" }}>
                   <Icon name="check" size={24} />
                 </div>
                 <h3 className="h3">Thanks — we&apos;ll be in touch within one business day.</h3>

@@ -31,12 +31,12 @@ export default async function BlogPage() {
                 style={{
                   background: featured.image
                     ? `url(${featured.image}) center/cover`
-                    : "linear-gradient(135deg, rgba(61,220,154,0.18), rgba(79,123,230,0.1))",
+                    : "linear-gradient(135deg, rgba(79, 139, 255,0.18), rgba(79,123,230,0.1))",
                   aspectRatio: "auto",
                 }}
               >
                 {!featured.image && (
-                  <div className="pf-thumb-bg" style={{ color: "rgba(61,220,154,0.25)", fontSize: 280 }}>
+                  <div className="pf-thumb-bg" style={{ color: "rgba(79, 139, 255,0.25)", fontSize: 280 }}>
                     {featured.title.charAt(0)}
                   </div>
                 )}

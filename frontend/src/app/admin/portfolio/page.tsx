@@ -11,7 +11,7 @@ import { adminContent } from "@/lib/admin-crud";
 import type { PortfolioItem } from "@/lib/types";
 
 const INDUSTRIES = ["Fintech", "Healthtech", "Supply chain", "Energy", "Media", "AI", "Mobile", "Retail"];
-const COLOR_OPTIONS = ["#3DDC9A", "#4F7BE6", "#F5A524", "#C792EA", "#FF5A5F"];
+const COLOR_OPTIONS = ["#4F8BFF", "#4F7BE6", "#F5A524", "#C792EA", "#FF5A5F"];
 
 type FormState = {
   id?: string;
@@ -32,7 +32,7 @@ type FormState = {
 
 const EMPTY: FormState = {
   client: "", industry: "Fintech", title: "", year: new Date().getFullYear(), span: 4,
-  status: "Live", thumb: "X", color: "#3DDC9A", metric: "", summary: "", body: "",
+  status: "Live", thumb: "X", color: "#4F8BFF", metric: "", summary: "", body: "",
 };
 
 export default function PortfolioAdminPage() {

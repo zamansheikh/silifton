@@ -29,7 +29,7 @@ export const SEED_PORTFOLIO: PortfolioItem[] = [
   {
     id: "case-01", client: "Helix Bank", industry: "Fintech",
     title: "Replatformed core onto event-driven Kotlin services",
-    year: 2025, span: 8, status: "Live", thumb: "H", color: "#3DDC9A",
+    year: 2025, span: 8, status: "Live", thumb: "H", color: "#4F8BFF",
     metric: "$1.2B daily volume",
     image: "/portfolio/case-01-fintech.jpg",
     summary: "A nine-month replatform of a 12-year-old monolith onto event-driven Kotlin services, completed with zero customer-visible downtime.",
@@ -79,7 +79,7 @@ export const SEED_PORTFOLIO: PortfolioItem[] = [
   {
     id: "case-05", client: "Loom Studio", industry: "Media",
     title: "Editorial CMS used by 400+ newsrooms",
-    year: 2024, span: 4, status: "Live", thumb: "L", color: "#3DDC9A",
+    year: 2024, span: 4, status: "Live", thumb: "L", color: "#4F8BFF",
     metric: "400+ rooms",
     image: "/portfolio/case-05-media.jpg",
     summary: "Editorial CMS rebuilt from scratch — now powering 400+ newsrooms with collaborative editing, AI-assisted research, and one-click syndication.",
@@ -232,7 +232,7 @@ export const SEED_KPI = {
   hires: [1, 0, 1, 2, 1, 2, 3, 2, 3, 4, 3, 5],
   months: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"],
   sources: [
-    { label: "Direct", value: 38, color: "#3DDC9A" },
+    { label: "Direct", value: 38, color: "#4F8BFF" },
     { label: "Referrals", value: 28, color: "#4F7BE6" },
     { label: "Search", value: 22, color: "#F5A524" },
     { label: "Social", value: 12, color: "#C792EA" },
