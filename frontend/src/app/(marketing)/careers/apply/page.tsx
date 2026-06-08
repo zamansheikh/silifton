@@ -1,11 +1,14 @@
 import { ApplyForm } from "./apply-form";
 import { getCareers } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 export const revalidate = 60;
 
-export const metadata = {
-  title: "Apply — Silifton careers",
-};
+export const metadata = buildMetadata({
+  title: "Apply",
+  description: "Apply to an open role at our senior-only engineering studio.",
+  path: "/careers/apply",
+});
 
 export default async function ApplyPage({
   searchParams,

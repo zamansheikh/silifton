@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { getPosts } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Field notes",
+  description:
+    "Field notes on shipping production software — engineering, design, AI, and how we run our delivery cadence.",
+  path: "/blog",
+});
 
 export const revalidate = 60;
 

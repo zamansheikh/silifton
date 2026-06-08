@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { getTeam } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "About",
+  description:
+    "Meet the senior-only engineering studio behind production fintech, health, and AI products — our principles, our team, and our track record.",
+  path: "/about",
+});
 
 export const revalidate = 60;
 

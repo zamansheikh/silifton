@@ -1,6 +1,11 @@
 import { LegalPage } from "@/components/marketing/legal-page";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Terms — Silifton" };
+export const metadata = buildMetadata({
+  title: "Terms of Service",
+  description: "The terms that govern use of this website and its content.",
+  path: "/terms",
+});
 
 export default function Terms() {
   return (

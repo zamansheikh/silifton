@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { getPosts } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 export const revalidate = 60;
 
@@ -10,10 +11,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const posts = await getPosts();
   const post = posts.find((p) => p.id === slug);
-  return {
-    title: post ? `${post.title} — Silifton` : "Post not found — Silifton",
-    description: post?.excerpt ?? `${post?.category ?? ""} · ${post?.author ?? ""} · ${post?.read ?? ""} read`,
-  };
+  if (!post || post.status !== "Published") {
+    return buildMetadata({ title: "Post not found", path: `/blog/${slug}`, noIndex: true });
+  }
+  return buildMetadata({
+    title: post.title,
+    description: post.excerpt ?? `${post.category} · ${post.author} · ${post.read} read`,
+    path: `/blog/${post.id}`,
+    image: post.image,
+    type: "article",
+    authors: [post.author],
+  });
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {

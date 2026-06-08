@@ -1,6 +1,11 @@
 import { LegalPage } from "@/components/marketing/legal-page";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Privacy — Silifton" };
+export const metadata = buildMetadata({
+  title: "Privacy Policy",
+  description: "How we collect, use, retain, and protect your data.",
+  path: "/privacy",
+});
 
 export default function Privacy() {
   return (

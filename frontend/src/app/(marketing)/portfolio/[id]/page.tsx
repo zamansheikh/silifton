@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { PortfolioCard } from "@/components/marketing/portfolio-card";
 import { getPortfolio } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 export const revalidate = 60;
 
@@ -15,10 +16,16 @@ export async function generateMetadata({
   const { id } = await params;
   const items = await getPortfolio();
   const item = items.find((p) => p.id === id);
-  return {
-    title: item ? `${item.client} — ${item.title} — Silifton` : "Case file not found — Silifton",
-    description: item?.summary,
-  };
+  if (!item) {
+    return buildMetadata({ title: "Case file not found", path: `/portfolio/${id}`, noIndex: true });
+  }
+  return buildMetadata({
+    title: `${item.client} — ${item.title}`,
+    description: item.summary,
+    path: `/portfolio/${item.id}`,
+    image: item.image,
+    type: "article",
+  });
 }
 
 export default async function CaseFilePage({

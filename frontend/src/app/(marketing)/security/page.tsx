@@ -1,6 +1,11 @@
 import { LegalPage } from "@/components/marketing/legal-page";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Security — Silifton" };
+export const metadata = buildMetadata({
+  title: "Security",
+  description: "How we protect client work — data handling, access control, and infrastructure.",
+  path: "/security",
+});
 
 export default function Security() {
   return (

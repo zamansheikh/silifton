@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Icon, type IconName } from "@/components/ui/icon";
 import { getServices } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Services",
+  description:
+    "Product engineering, cloud & platform, AI & data, mobile, and design — delivered by senior squads. Fixed-scope builds, embedded squads, or staff augmentation.",
+  path: "/services",
+});
 
 export const revalidate = 60;
 
