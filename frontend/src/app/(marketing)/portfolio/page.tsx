@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Icon } from "@/components/ui/icon";
 import { PortfolioCard } from "@/components/marketing/portfolio-card";
+import { CTABand } from "@/components/marketing/cta-band";
 import { cn } from "@/lib/cn";
 import { SEED_PORTFOLIO } from "@/lib/seed";
 import type { PortfolioItem } from "@/lib/types";
@@ -57,6 +58,8 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+
+      <CTABand />
     </>
   );
 }

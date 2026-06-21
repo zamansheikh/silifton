@@ -30,7 +30,6 @@ export function TopNav() {
           <Link className="brand" href="/">
             <Image src="/logo.webp" alt="" width={28} height={28} priority />
             <span>Silifton</span>
-            <span className="brand-mark">EST. 2019</span>
           </Link>
           <nav className="nav-links">
             {LINKS.map((l) => {
