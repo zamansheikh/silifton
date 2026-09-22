@@ -62,7 +62,7 @@ export function PortfolioCard({
           {item.year} · {item.id}
         </div>
       </div>
-      <div className="pf-meta">
+      <div className="pf-meta" style={fill ? { flex: "0 0 auto" } : undefined}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--fg-mute)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
             {item.client}
