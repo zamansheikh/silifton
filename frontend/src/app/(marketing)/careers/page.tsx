@@ -1,13 +1,8 @@
-"use client";
+import { getCareers } from "@/lib/content";
+import { CareersList } from "./careers-list";
 
-import { useEffect, useMemo, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Icon } from "@/components/ui/icon";
-import { cn } from "@/lib/cn";
-import { SEED_CAREERS } from "@/lib/seed";
-import type { Career } from "@/lib/types";
+export const dynamic = "force-dynamic";
 
-const TEAMS = ["Engineering", "Design", "AI", "Operations"];
 const PERKS: Array<[string, string]> = [
   ["Top-of-band pay", "We pay the 90th-percentile salary for your role and tenure, anywhere you live."],
   ["6-week onboarding", "Paired with a senior engineer. You ship to production in week three."],
@@ -17,19 +12,8 @@ const PERKS: Array<[string, string]> = [
   ["Equity from day one", "Real equity, in cash-flowing entity. Vests over 4 years."],
 ];
 
-export default function CareersPage() {
-  const [careers, setCareers] = useState<Career[]>(SEED_CAREERS);
-  const [team, setTeam] = useState<string>("Engineering");
-
-  useEffect(() => {
-    const base = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:7011";
-    fetch(`${base}/api/content/careers`)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d) => { if (Array.isArray(d) && d.length) setCareers(d as Career[]); })
-      .catch(() => {});
-  }, []);
-
-  const open = useMemo(() => careers.filter((c) => c.status === "Open"), [careers]);
+export default async function CareersPage() {
+  const careers = await getCareers();
 
   return (
     <>
@@ -47,47 +31,7 @@ export default function CareersPage() {
 
       <section style={{ padding: "20px 0 100px" }}>
         <div className="wrap">
-          <div className="panel" style={{ padding: 32 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24, flexWrap: "wrap", gap: 16 }}>
-              <h3 className="h3">Open roles · {open.length}</h3>
-              <div style={{ display: "flex", gap: 6 }}>
-                {TEAMS.map((tt) => (
-                  <button
-                    key={tt}
-                    className={cn("btn", "btn-sm", team === tt ? "btn-primary" : "btn-ghost")}
-                    onClick={() => setTeam(tt)}
-                  >
-                    {tt}
-                  </button>
-                ))}
-              </div>
-            </div>
-            {open.map((j) => (
-              <div
-                key={j.id}
-                className="role-row"
-                style={{
-                  padding: "20px 0",
-                  borderTop: "1px solid var(--border)",
-                }}
-              >
-                <div className="role-row__title">
-                  <div style={{ fontWeight: 500, fontSize: 16 }}>{j.title}</div>
-                  <div style={{ color: "var(--fg-mute)", fontSize: 13, marginTop: 4 }}>{j.team} · {j.level}</div>
-                </div>
-                <div className="role-row__meta">
-                  <span style={{ color: "var(--fg-dim)", fontSize: 13.5 }}>{j.location}</span>
-                  <span style={{ color: "var(--fg-dim)", fontSize: 13.5 }}>{j.type}</span>
-                  <span className="mono" style={{ color: "var(--fg-faint)", fontSize: 12 }}>Posted {j.posted}</span>
-                </div>
-                <div className="role-row__apply">
-                  <Button variant="ghost" size="sm" href={`/careers/apply?role=${encodeURIComponent(j.id)}`}>
-                    Apply <Icon name="arrow" size={12} />
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
+          <CareersList careers={careers} />
 
           <div className="grid-3" style={{ marginTop: 80 }}>
             {PERKS.map(([k, v]) => (

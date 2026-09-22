@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Work",
   description:
-    "Case files from production engagements across fintech, healthtech, logistics, energy, and media — real systems, measurable outcomes.",
+    "Products Silifton builds and runs — school management, mobile apps, developer tools and open-source libraries — with the engineering behind each.",
   path: "/portfolio",
 });
 
