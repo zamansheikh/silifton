@@ -2,17 +2,30 @@ import Link from "next/link";
 import { Icon } from "@/components/ui/icon";
 import type { PortfolioItem } from "@/lib/types";
 
-export function PortfolioCard({ item, span = 4, large = false }: { item: PortfolioItem; span?: number; large?: boolean }) {
+export function PortfolioCard({
+  item,
+  span = 4,
+  rowSpan = 1,
+  large = false,
+}: {
+  item: PortfolioItem;
+  span?: number;
+  /** Rows to occupy in the 12-column grid; >1 makes the thumbnail fill the card height. */
+  rowSpan?: number;
+  large?: boolean;
+}) {
   const hasImage = Boolean(item.image);
+  const fill = rowSpan > 1;
   return (
-    <Link href={`/portfolio/${item.id}`} className="pf-card" style={{ gridColumn: `span ${span}` }}>
+    <Link href={`/portfolio/${item.id}`} className="pf-card" style={{ gridColumn: `span ${span}`, gridRow: fill ? `span ${rowSpan}` : undefined }}>
       <div
         className="pf-thumb"
-        style={
-          hasImage
+        style={{
+          ...(hasImage
             ? { backgroundImage: `url(${item.image})`, backgroundSize: "cover", backgroundPosition: "center" }
-            : { background: `linear-gradient(135deg, ${item.color}26, ${item.color}06)` }
-        }
+            : { background: `linear-gradient(135deg, ${item.color}26, ${item.color}06)` }),
+          ...(fill ? { aspectRatio: "auto", flex: 1, minHeight: 340 } : {}),
+        }}
       >
         {!hasImage && (
           <div className="pf-thumb-bg" style={{ color: `${item.color}30`, fontSize: large ? 240 : 160 }}>
@@ -56,7 +69,7 @@ export function PortfolioCard({ item, span = 4, large = false }: { item: Portfol
           </span>
           <span className="tag tag-accent">{item.metric}</span>
         </div>
-        <div className="pf-title">{item.title}</div>
+        <div className="pf-title" style={large ? { fontSize: 24 } : undefined}>{item.title}</div>
         {item.summary && (
           <p
             style={{

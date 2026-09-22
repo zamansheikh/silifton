@@ -531,7 +531,7 @@ img { display: block; max-width: 100%; }
   .hero-glow-b { width: 420px; height: 420px; bottom: -180px; right: -80px; }
   /* portfolio cards always full-width on tiny screens */
   .portfolio-grid { display: flex; flex-direction: column; gap: 16px; }
-  .portfolio-grid > * { grid-column: auto !important; width: 100%; }
+  .portfolio-grid > * { grid-column: auto !important; grid-row: auto !important; width: 100%; }
   /* prevent inputs from triggering iOS zoom */
   .input, .textarea, .select { font-size: 16px; }
   /* code window: smaller text */
