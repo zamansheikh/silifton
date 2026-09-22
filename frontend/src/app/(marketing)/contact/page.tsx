@@ -13,9 +13,8 @@ const DIRECT_LINES: Array<[string, string]> = [
 ];
 
 const OFFICES: Array<[string, string]> = [
-  ["Dhaka", "House 14, Road 27, Banani · GMT+6"],
-  ["London", "Borough Yards, SE1 1RU · GMT+0"],
-  ["Lagos", "Akin Adesola, Victoria Island · GMT+1"],
+  ["Dhaka, Bangladesh", "Head office · GMT+6"],
+  ["Seoul, South Korea", "GMT+9"],
 ];
 
 export default function ContactPage() {

@@ -10,8 +10,8 @@ export type FooterContent = {
 };
 
 const DEFAULTS = {
-  tagline: "A senior-only engineering studio for fintech, health and AI-native products. Engineered in Dhaka, London and Lagos.",
-  address: "Dhaka · London · Lagos",
+  tagline: "A senior-only engineering studio for fintech, health and AI-native products. Engineered in Dhaka and Seoul.",
+  address: "Dhaka, Bangladesh · Seoul, South Korea",
   email: "hello@silifton.com",
   copyright: `© ${new Date().getFullYear()} Silifton Ltd. All rights reserved.`,
 };

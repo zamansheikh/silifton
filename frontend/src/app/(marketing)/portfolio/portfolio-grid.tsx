@@ -28,8 +28,8 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
 
       <section style={{ paddingTop: 40, paddingBottom: 100 }}>
         <div className="portfolio-grid">
-          {visible.map((p, idx) => (
-            <PortfolioCard key={p.id} item={p} span={idx === 0 ? 8 : 4} large={idx === 0} />
+          {visible.map((p) => (
+            <PortfolioCard key={p.id} item={p} span={4} />
           ))}
         </div>
       </section>

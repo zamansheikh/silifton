@@ -21,8 +21,8 @@ export function PortfolioTeaser({ items }: { items: PortfolioItem[] }) {
         </div>
 
         <div className="portfolio-grid">
-          {featured.map((p, i) => (
-            <PortfolioCard key={p.id} item={p} span={i === 0 ? 8 : 4} large={i === 0} />
+          {featured.map((p) => (
+            <PortfolioCard key={p.id} item={p} span={4} />
           ))}
         </div>
       </div>
