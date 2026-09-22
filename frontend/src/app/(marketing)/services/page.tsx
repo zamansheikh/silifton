@@ -15,21 +15,21 @@ export const revalidate = 60;
 const MODELS = [
   {
     title: "Fixed-scope build",
-    price: "from $80k",
+    price: "$5k – $25k",
     desc: "A defined product, milestone-billed. Best for greenfield builds and clear scope.",
     best: ["6–24 week projects", "Production handover", "Fixed milestone billing"],
     featured: false,
   },
   {
     title: "Embedded squad",
-    price: "from $40k/mo",
+    price: "from $4k/mo",
     desc: "A team of senior engineers and designers, integrated into your roadmap as one cell.",
     best: ["3–12 month engagements", "Weekly delivery cadence", "Full source-of-truth access"],
     featured: true,
   },
   {
     title: "Advisory retainer",
-    price: "from $12k/mo",
+    price: "from $1.5k/mo",
     desc: "Senior leadership in your inbox. Architecture review, hiring, due diligence on demand.",
     best: ["CTO-level office hours", "Code & RFC review", "Pre-IPO / fundraise support"],
     featured: false,

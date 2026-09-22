@@ -5,19 +5,19 @@ import type { PortfolioItem } from "@/lib/types";
 export function PortfolioCard({
   item,
   span = 4,
-  rowSpan = 1,
+  layout = "stack",
   large = false,
 }: {
   item: PortfolioItem;
   span?: number;
-  /** Rows to occupy in the 12-column grid; >1 makes the thumbnail fill the card height. */
-  rowSpan?: number;
+  /** "wide" lays the image beside the text (full-width featured card). */
+  layout?: "stack" | "wide";
   large?: boolean;
 }) {
   const hasImage = Boolean(item.image);
-  const fill = rowSpan > 1;
+  const fill = layout === "wide";
   return (
-    <Link href={`/portfolio/${item.id}`} className="pf-card" style={{ gridColumn: `span ${span}`, gridRow: fill ? `span ${rowSpan}` : undefined }}>
+    <Link href={`/portfolio/${item.id}`} className={fill ? "pf-card grid-blog-feature" : "pf-card"} style={{ gridColumn: `span ${fill ? 12 : span}` }}>
       <div
         className="pf-thumb"
         style={{
@@ -62,7 +62,7 @@ export function PortfolioCard({
           {item.year} · {item.id}
         </div>
       </div>
-      <div className="pf-meta" style={fill ? { flex: "0 0 auto" } : undefined}>
+      <div className="pf-meta" style={fill ? { padding: 36, justifyContent: "center" } : undefined}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--fg-mute)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
             {item.client}

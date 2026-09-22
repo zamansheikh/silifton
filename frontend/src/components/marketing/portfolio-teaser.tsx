@@ -27,11 +27,11 @@ export function PortfolioTeaser({ items }: { items: PortfolioItem[] }) {
           </Link>
         </div>
 
-        {/* Featured card spans 8 columns and 2 rows; two cards stack beside it,
-            three more fill the row below. */}
+        {/* Featured card runs full width with the image beside the text; then a
+            row of three and a row of two. */}
         <div className="portfolio-grid">
           {featured.map((p, i) => (
-            <PortfolioCard key={p.id} item={p} span={i === 0 ? 8 : 4} rowSpan={i === 0 ? 2 : 1} large={i === 0} />
+            <PortfolioCard key={p.id} item={p} layout={i === 0 ? "wide" : "stack"} span={i >= 4 ? 6 : 4} large={i === 0} />
           ))}
         </div>
       </div>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 
-type Budget = "$50k–$100k" | "$100k–$250k" | "$250k–$500k" | "$500k+" | "Not sure yet";
+type Budget = "$5k–$10k" | "$10k–$25k" | "$25k–$50k" | "$50k+" | "Not sure yet";
 
 const DIRECT_LINES: Array<[string, string]> = [
   ["Partnerships & RFPs", "partners@silifton.com"],
@@ -20,7 +20,7 @@ const OFFICES: Array<[string, string]> = [
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "", company: "", email: "",
-    subject: "", budget: "$100k–$250k" as Budget, message: "",
+    subject: "", budget: "$10k–$25k" as Budget, message: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
@@ -48,7 +48,7 @@ export default function ContactPage() {
   };
 
   const reset = () => {
-    setForm({ name: "", company: "", email: "", subject: "", budget: "$100k–$250k", message: "" });
+    setForm({ name: "", company: "", email: "", subject: "", budget: "$10k–$25k", message: "" });
     setStatus("idle");
     setError(null);
   };
@@ -102,8 +102,8 @@ export default function ContactPage() {
                   <div className="field" style={{ gridColumn: "span 2" }}>
                     <label>Estimated budget</label>
                     <select className="select" value={form.budget} onChange={(e) => setForm({ ...form, budget: e.target.value as Budget })}>
-                      <option>$50k–$100k</option><option>$100k–$250k</option><option>$250k–$500k</option>
-                      <option>$500k+</option><option>Not sure yet</option>
+                      <option>$5k–$10k</option><option>$10k–$25k</option><option>$25k–$50k</option>
+                      <option>$50k+</option><option>Not sure yet</option>
                     </select>
                   </div>
                   <div className="field" style={{ gridColumn: "span 2" }}>
