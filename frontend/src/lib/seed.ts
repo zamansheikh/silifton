@@ -184,14 +184,8 @@ export const SEED_PORTFOLIO: PortfolioItem[] = [
   },
 ];
 
-export const SEED_TEAM: TeamMember[] = [
-  { name: "Mehedi Hasan", role: "Chief Executive", initials: "MH", focus: "Strategy, Partnerships" },
-  { name: "Zaman Sheikh", role: "Chief Technology Officer", initials: "ZS", focus: "Architecture, Platform" },
-  { name: "Aria Mahmud", role: "Head of Design", initials: "AM", focus: "Brand, Research" },
-  { name: "Tahsin Rahman", role: "VP, Engineering", initials: "TR", focus: "Mobile, Backend" },
-  { name: "Sadia Karim", role: "Head of AI", initials: "SK", focus: "ML, Data" },
-  { name: "Junaid Ali", role: "Director of Operations", initials: "JA", focus: "Delivery, PMO" },
-];
+// The team comes from the CRM staff list; no placeholder people in the fallback.
+export const SEED_TEAM: TeamMember[] = [];
 
 // Fallback copy of the published posts; the CRM API is the source of truth.
 export const SEED_POSTS: Post[] = [
