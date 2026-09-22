@@ -20,6 +20,10 @@
 
 set -euo pipefail
 
+# The whole script runs inside main() so bash has parsed all of it before the
+# `git reset --hard` below rewrites this file — otherwise a changed deploy.sh
+# would be executed half-old, half-new.
+main() {
 # ---- config ------------------------------------------------------------
 APP_DIR="${APP_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
 BRANCH="${BRANCH:-main}"
@@ -108,3 +112,6 @@ echo ""
 echo "Logs:    pm2 logs"
 echo "Status:  pm2 status"
 echo "Restart: pm2 reload all"
+}
+
+main "$@"
