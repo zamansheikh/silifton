@@ -23,9 +23,9 @@ const PRINCIPLES: Array<[string, string]> = [
 const NUMBERS: Array<[string, string]> = [
   ["38", "People worldwide"],
   ["3.4 yr", "Avg. engagement"],
-  ["142", "Products shipped"],
+  ["80", "Products shipped"],
   ["98%", "Client retention"],
-  ["$2.4B", "Customer volume served"],
+  ["$1.47M", "Customer volume served"],
   ["18", "Industries served"],
   ["0", "Junior engineers"],
   ["7 d", "Avg. time to first commit"],

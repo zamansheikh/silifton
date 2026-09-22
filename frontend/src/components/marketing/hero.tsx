@@ -33,7 +33,7 @@ const FALLBACK: HeroContent = {
 
 const STATS = [
   { num: "80", label: "Products shipped" },
-  { num: "$2.4M", label: "Volume served" },
+  { num: "$1.47M", label: "Volume served" },
   { num: "98.4%", label: "SLA retention" },
   { num: "12", label: "Countries · clients" },
 ];
@@ -164,7 +164,7 @@ function HeroSplit({ c }: { c: HeroContent }) {
               <div className="hero-statline" style={{ marginTop: 32, gap: 40 }}>
                 <div><div className="stat-num">80</div><div className="stat-label">Shipped</div></div>
                 <div><div className="stat-num">98%</div><div className="stat-label">SLA</div></div>
-                <div><div className="stat-num">$2.4M</div><div className="stat-label">Volume</div></div>
+                <div><div className="stat-num">$1.47M</div><div className="stat-label">Volume</div></div>
               </div>
             )}
           </div>

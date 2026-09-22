@@ -37,7 +37,7 @@ export function TestimonialBlock({ testimonial }: { testimonial: Testimonial }) 
             </div>
             <div className="grid-2" style={{ gap: 28 }}>
               <div><div className="stat-num accent-text">9 mo</div><div className="stat-label">Full replatform</div></div>
-              <div><div className="stat-num accent-text">$1.2B</div><div className="stat-label">Daily volume served</div></div>
+              <div><div className="stat-num accent-text">$1.47M</div><div className="stat-label">Volume served</div></div>
               <div><div className="stat-num accent-text">−68%</div><div className="stat-label">P99 latency</div></div>
               <div><div className="stat-num accent-text">0</div><div className="stat-label">Incidents in cutover</div></div>
             </div>
