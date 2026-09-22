@@ -1,8 +1,9 @@
 # Silifton nginx reverse proxy
 # ------------------------------------------------------------
 # Two server blocks: marketing at the apex domain, API at api.<domain>.
-# Using a separate subdomain for the API avoids the path conflict between
-# Next.js routes under /api/* (e.g. /api/proxy/*) and the NestJS backend.
+# The API is the CRM API (silifton-crm-api on :7011) — it serves site content,
+# the contact/careers forms and the analytics beacon. api.<domain> is kept as
+# an alias of crmapi.<domain> so older links keep working.
 #
 # Install:
 #   sudo cp deploy/nginx.conf.template /etc/nginx/sites-available/silifton
@@ -57,11 +58,10 @@ server {
   listen [::]:80;
   server_name api.silifton.example.com;
 
-  # Allow up to ~10MB uploads (Cloudinary uploads stream through here)
-  client_max_body_size 12M;
+  client_max_body_size 16M;
 
   location / {
-    proxy_pass http://127.0.0.1:7001;
+    proxy_pass http://127.0.0.1:7011;
     proxy_http_version 1.1;
     proxy_set_header Host              $host;
     proxy_set_header X-Real-IP         $remote_addr;
@@ -69,9 +69,6 @@ server {
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header X-Forwarded-Host  $host;
 
-    # Don't buffer multipart uploads — stream them straight through to Nest
-    proxy_request_buffering off;
-    proxy_buffering         off;
     proxy_read_timeout      120s;
   }
 }

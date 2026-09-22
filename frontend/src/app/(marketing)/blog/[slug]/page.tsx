@@ -30,7 +30,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = posts.find((p) => p.id === slug);
   if (!post) notFound();
 
-  // Only show published posts to the public (admin can read drafts via /admin/blog).
+  // Only show published posts to the public (drafts are visible in the CRM → Website → Blog).
   if (post.status !== "Published") notFound();
 
   const paragraphs = (post.body ?? "").split("\n\n").filter(Boolean);

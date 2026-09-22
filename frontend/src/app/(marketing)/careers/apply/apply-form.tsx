@@ -24,7 +24,7 @@ export function ApplyForm({ roles, initialRoleId }: { roles: Career[]; initialRo
     setStatus("sending");
     setError(null);
     try {
-      const base = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:7001";
+      const base = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:7011";
       const res = await fetch(`${base}/api/applications`, {
         method: "POST",
         headers: { "content-type": "application/json" },

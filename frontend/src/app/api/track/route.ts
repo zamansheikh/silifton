@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:7001";
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:7011";
 
 /**
  * Public analytics beacon. Forwards anonymous /api/track from the browser to

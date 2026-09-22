@@ -4,9 +4,12 @@
 #
 # Idempotent — safe to re-run. What it does:
 #   1. cd into the repo, fetch + reset to origin/main
-#   2. Install deps in backend/ and frontend/ (omits devDeps after build is done)
-#   3. Build backend (nest build → dist/) and frontend (next build → .next/)
+#   2. Install deps in frontend/
+#   3. Build the frontend (next build → .next/)
 #   4. Reload PM2 (zero-downtime) or start it if this is the first run
+#
+# The API lives in the silifton-crm repo (deployed separately) — this script
+# only builds and serves the public Next.js site.
 #   5. Persist the PM2 process list so it survives reboots
 #
 # Run as the user that owns the repo (NOT root). Example:
@@ -67,33 +70,29 @@ git reset --hard "origin/$BRANCH" --quiet
 git submodule update --init --recursive --quiet 2>/dev/null || true
 echo "    HEAD = $(git rev-parse --short HEAD) — $(git log -1 --pretty=%s)"
 
-# ---- 2. env file warnings (don't fail; they may be in CI/CD secrets) ---
-for f in "backend/.env" "frontend/.env.local"; do
-  if [[ ! -f "$APP_DIR/$f" ]]; then
-    yellow "$f is missing — the app will boot with whatever process.env provides."
-  fi
-done
+# ---- 2. env file warning (don't fail; it may come from CI/CD secrets) ----
+if [[ ! -f "$APP_DIR/frontend/.env.local" ]]; then
+  yellow "frontend/.env.local is missing — NEXT_PUBLIC_API_URL should point at the CRM API."
+fi
 
-# ---- 3. backend ----------------------------------------------------------
-blue "Backend: install + build"
-cd "$APP_DIR/backend"
-npm ci --include=dev --no-audit --no-fund
-npm run build
-echo "    ✓ dist/main.js built ($(date -r dist/main.js '+%Y-%m-%d %H:%M:%S'))"
-
-# ---- 4. frontend ---------------------------------------------------------
+# ---- 3. frontend ---------------------------------------------------------
 blue "Frontend: install + build"
 cd "$APP_DIR/frontend"
 npm ci --include=dev --no-audit --no-fund
 npm run build
 echo "    ✓ .next/ built ($(date -r .next '+%Y-%m-%d %H:%M:%S'))"
 
-# ---- 5. PM2 reload (or start) -------------------------------------------
+# ---- 4. PM2 reload (or start) -------------------------------------------
 cd "$APP_DIR"
 ECOSYSTEM="$APP_DIR/deploy/ecosystem.config.js"
 
-if pm2 describe silifton-backend >/dev/null 2>&1 \
-&& pm2 describe silifton-frontend >/dev/null 2>&1; then
+# The old NestJS API process is gone; make sure a stale one isn't left running.
+if pm2 describe silifton-backend >/dev/null 2>&1; then
+  yellow "Removing retired silifton-backend PM2 process (API now served by silifton-crm-api)"
+  pm2 delete silifton-backend >/dev/null 2>&1 || true
+fi
+
+if pm2 describe silifton-frontend >/dev/null 2>&1; then
   blue "PM2 reload (zero-downtime)"
   pm2 reload "$ECOSYSTEM" --update-env
 else

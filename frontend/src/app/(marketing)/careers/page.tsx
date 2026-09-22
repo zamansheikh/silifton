@@ -22,7 +22,7 @@ export default function CareersPage() {
   const [team, setTeam] = useState<string>("Engineering");
 
   useEffect(() => {
-    const base = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:7001";
+    const base = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:7011";
     fetch(`${base}/api/content/careers`)
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => { if (Array.isArray(d) && d.length) setCareers(d as Career[]); })

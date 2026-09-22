@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * Tiny first-party tracker. Fires once per pathname change against
- * /api/proxy/analytics/track. No cookies, no consent banner needed —
+ * /api/track, which forwards to the API. No cookies, no consent banner needed —
  * the server bucketizes by hashed IP+UA+day.
  */
 export function AnalyticsBeacon() {

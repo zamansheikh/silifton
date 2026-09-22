@@ -1,9 +1,9 @@
 /**
- * PM2 process map for the Silifton VPS deploy.
+ * PM2 process map for the Silifton marketing site.
  *
- * Each app's working directory is set to its package root so .env / .env.local
- * are picked up automatically (NestJS ConfigModule reads cwd/.env; Next.js
- * reads cwd/.env.local).
+ * Only the Next.js frontend runs here now. The API that serves its content
+ * (and the admin UI for editing it) lives in the silifton-crm repo:
+ *   crmapi.silifton.com → silifton-crm-api (PM2)   ·   crm.silifton.com → Website section
  *
  * Run from the repo root:
  *   pm2 start  deploy/ecosystem.config.js           # first time
@@ -12,23 +12,6 @@
  */
 module.exports = {
   apps: [
-    {
-      name: "silifton-backend",
-      cwd: "./backend",
-      script: "dist/main.js",
-      instances: 1,
-      exec_mode: "fork",
-      max_memory_restart: "500M",
-      autorestart: true,
-      watch: false,
-      env: {
-        NODE_ENV: "production",
-      },
-      out_file: "/var/log/silifton/backend.out.log",
-      error_file: "/var/log/silifton/backend.err.log",
-      merge_logs: true,
-      time: true,
-    },
     {
       name: "silifton-frontend",
       cwd: "./frontend",
